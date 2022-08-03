@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/pokemons-rolodex/static/css/main.b5214800.css",
-    "main.js": "/pokemons-rolodex/static/js/main.831caf71.js",
+    "main.js": "/pokemons-rolodex/static/js/main.1879615b.js",
     "index.html": "/pokemons-rolodex/index.html",
     "main.b5214800.css.map": "/pokemons-rolodex/static/css/main.b5214800.css.map",
-    "main.831caf71.js.map": "/pokemons-rolodex/static/js/main.831caf71.js.map"
+    "main.1879615b.js.map": "/pokemons-rolodex/static/js/main.1879615b.js.map"
   },
   "entrypoints": [
     "static/css/main.b5214800.css",
-    "static/js/main.831caf71.js"
+    "static/js/main.1879615b.js"
   ]
 }
