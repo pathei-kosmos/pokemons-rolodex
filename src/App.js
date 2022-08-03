@@ -1,6 +1,7 @@
 import { Component } from "react";
 import CardList from "./components/card-list/card-list.component";
 import SearchBox from "./components/search-box/search-box.component";
+import GitCorner from "./components/git-corner/git-corner.component";
 import "./App.css";
 
 class App extends Component {
@@ -74,6 +75,7 @@ class App extends Component {
 
     return (
       <div className="App">
+        <GitCorner />
         <h1>
           Pokemons Rolodex
           <img alt="pokeball" className="title-image" src="./pokeball.png"></img>
