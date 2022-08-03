@@ -8,7 +8,7 @@ The app uses [class-based components](https://reactjs.org/docs/react-component.h
 
 ## Requirements
 
-* Node 
+* npm 
 * Git
 * CLI
 
