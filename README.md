@@ -1,1 +1,0 @@
-Build and [**deployment**](https://pathei-kosmos.github.io/pokemons-rolodex/) of [Pokemons Rolodex](https://github.com/pathei-kosmos/pokemons-rolodex) using [Webpack](https://webpack.js.org/) and [Github Pages](https://pages.github.com/).
