@@ -75,7 +75,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>
-          Pokemons Rolodex{" "}
+          Pokemons Rolodex
           <img alt="pokeball" className="title-image" src="./pokeball.png"></img>
         </h1>
         <SearchBox
