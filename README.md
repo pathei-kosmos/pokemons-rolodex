@@ -24,3 +24,9 @@ cd pokemons-rolodex
 ```bash
 npm install
 ```
+
+Launch the live server:
+```bash
+npm start
+```
+
