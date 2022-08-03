@@ -15,8 +15,9 @@ class App extends Component {
   }
 
   componentDidMount() {
+  const randomOffset = Math.floor(Math.random() * (1142 - 1 + 1)) + 1;
     // fetch the pokemon API (returns only the names and URLs)
-    fetch("https://pokeapi.co/api/v2/pokemon?limit=12")
+    fetch(`https://pokeapi.co/api/v2/pokemon?limit=12&offset=${randomOffset}`)
       .then((res) => res.json())
       .then((pokemonsList) => {
         // update the state
@@ -28,9 +29,9 @@ class App extends Component {
           },
           () => {
             // creates a deep clone object of the state
-            let clone = JSON.parse(JSON.stringify(this.state.pokemons));
+            const clone = JSON.parse(JSON.stringify(this.state.pokemons));
             // create a promise on the forEach to trigger the setState once it is finished
-            let promisedSprites = new Promise((resolve, reject) => {
+            const promisedSprites = new Promise((resolve, reject) => {
               // fetch each URL of the clone and add the sprite and ID as properties
               clone.forEach((pokemon, index, array) => {
                 fetch(pokemon.url)
