@@ -15,7 +15,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const randomOffset = Math.floor(Math.random() * (1142 - 1 + 1)) + 1;
+    const randomOffset = Math.floor(Math.random() * (139 - 1 + 1)) + 1;
     // fetch the pokemon API (returns only the names and URLs)
     fetch(`https://pokeapi.co/api/v2/pokemon?limit=12&offset=${randomOffset}`)
       .then((res) => res.json())
