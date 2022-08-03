@@ -1,25 +1,92 @@
-import logo from './logo.svg';
-import './App.css';
+import { Component } from "react";
+import CardList from "./components/card-list/card-list.component";
+import SearchBox from "./components/search-box/search-box.component";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      pokemons: [],
+      searchField: "",
+    };
+  }
+
+  componentDidMount() {
+    // fetch the pokemon API (returns only the names and URLs)
+    fetch("https://pokeapi.co/api/v2/pokemon?limit=12")
+      .then((res) => res.json())
+      .then((pokemonsList) => {
+        // update the state
+        this.setState(
+          () => {
+            // put the received object in an array to map it
+            pokemonsList = [].concat(pokemonsList.results);
+            return { pokemons: pokemonsList };
+          },
+          () => {
+            // creates a deep clone object of the state
+            let clone = JSON.parse(JSON.stringify(this.state.pokemons));
+            // create a promise on the forEach to trigger the setState once it is finished
+            let promisedSprites = new Promise((resolve, reject) => {
+              // fetch each URL of the clone and add the sprite and ID as properties
+              clone.forEach((pokemon, index, array) => {
+                fetch(pokemon.url)
+                  .then((res) => res.json())
+                  .then((data) => {
+                    pokemon.id = data.id;
+                    pokemon.sprite =
+                      data.sprites.other["official-artwork"].front_default;
+                    // resolves the promise once the forEach is completed
+                    if (index === array.length - 1) resolve();
+                  })
+                  .catch((err) => console.log(err));
+              });
+            });
+
+            // update the state with the enriched clone once the forEach is finished
+            promisedSprites.then(() => {
+              this.setState(() => {
+                return { pokemons: clone };
+              });
+            });
+          }
+        );
+      })
+      .catch((err) => console.log(err));
+  }
+
+  onSearchChange = (event) => {
+    let searchField = event.target.value.toLocaleLowerCase();
+    this.setState(() => {
+      return { searchField };
+    });
+  };
+
+  render() {
+    const { pokemons, searchField } = this.state;
+    const { onSearchChange } = this;
+
+    let filteredPokemons = pokemons.filter((pokemon) => {
+      return pokemon.name.toLocaleLowerCase().includes(searchField);
+    });
+
+    return (
+      <div className="App">
+        <h1>
+          Pokemons Rolodex{" "}
+          <img alt="pokeball" className="title-image" src="./pokeball.png"></img>
+        </h1>
+        <SearchBox
+          onChangeHandler={onSearchChange}
+          placeholder="Search pokemons..."
+          className="pokemons-search-box"
+        />
+        <CardList pokemons={filteredPokemons} />
+      </div>
+    );
+  }
 }
 
 export default App;

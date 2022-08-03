@@ -1,0 +1,24 @@
+.card-container {
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border: 2px solid grey;
+  border-radius: 8px;
+  padding: 2rem;
+  width: 180px;
+  height: 220px;
+  transition: transform 0.1s ease-out;
+}
+
+.card-container:hover {
+  transform: scale(1.05);
+}
+
+.card-image {
+  height: 180px;
+}
+
+h2 {
+  margin-bottom: -10px;
+}
