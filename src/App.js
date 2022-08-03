@@ -10,7 +10,7 @@ class App extends Component {
 
     this.state = {
       pokemons: [],
-      searchField: "",
+      searchField: ""
     };
   }
 
@@ -34,12 +34,16 @@ class App extends Component {
             const promisedSprites = new Promise((resolve, reject) => {
               // fetch each URL of the clone and add the sprite and ID as properties
               clone.forEach((pokemon, index, array) => {
+                console.log('FETCH');
                 fetch(pokemon.url)
                   .then((res) => res.json())
                   .then((data) => {
+                    console.log(data);
                     pokemon.id = data.id;
                     pokemon.sprite =
-                      data.sprites.other["official-artwork"].front_default;
+                      data.sprites.other["official-artwork"].front_default
+                      || data.sprites.other["dream_world"].front_default
+                      || data.sprites.other.home.front_default;
                     // resolves the promise once the forEach is completed
                     if (index === array.length - 1) resolve();
                   })
