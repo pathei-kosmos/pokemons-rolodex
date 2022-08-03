@@ -15,7 +15,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-  const randomOffset = Math.floor(Math.random() * (1142 - 1 + 1)) + 1;
+    const randomOffset = Math.floor(Math.random() * (1142 - 1 + 1)) + 1;
     // fetch the pokemon API (returns only the names and URLs)
     fetch(`https://pokeapi.co/api/v2/pokemon?limit=12&offset=${randomOffset}`)
       .then((res) => res.json())
@@ -79,7 +79,11 @@ class App extends Component {
         <GitCorner />
         <h1>
           Pokemons Rolodex
-          <img alt="pokeball" className="title-image" src="./pokeball.png"></img>
+          <img
+            alt="pokeball"
+            className="title-image"
+            src="./pokeball.png"
+          ></img>
         </h1>
         <SearchBox
           onChangeHandler={onSearchChange}
