@@ -14,7 +14,7 @@ The app uses [class-based components](https://reactjs.org/docs/react-component.h
 
 ## Setup
 
-Clone the repo and install the dependencies.
+Clone the repo and install the dependencies:
 
 ```bash
 git clone https://github.com/pathei-kosmos/pokemons-rolodex
